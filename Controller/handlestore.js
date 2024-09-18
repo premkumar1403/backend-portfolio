@@ -1,5 +1,5 @@
 const user = require("../Model/user.js")
-
+const path=require("path")
 exports.handledata = async (req, res) => {
     try {
         const { name, email, message } = req.body;
@@ -16,16 +16,7 @@ exports.handledata = async (req, res) => {
     }
 }
 
-exports.download = async (req, res) => {
-  const { resume } = req.body;
-   
-  try {
-    if (resume) {
-      res.download("../Views/prem_resume.pdf");
-    }
+exports.download = async (req,res) => {
+  res.download(path.join(__dirname,"../Views/prem_resume.pdf"));
     
-  }
-  catch (error) {
-    res.status(404).json({message:"File is not found at this time"})
-  }
 }
