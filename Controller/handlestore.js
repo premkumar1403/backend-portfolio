@@ -15,3 +15,10 @@ exports.handledata = async (req, res) => {
          })
     }
 }
+
+exports.download = async (req, res) => {
+  try { res.download("../Views/prem_resume.pdf") }
+  catch (error) {
+    res.status(404).json({message:"File is not found at this time"})
+  }
+}
