@@ -16,7 +16,18 @@ exports.handledata = async (req, res) => {
     }
 }
 
-exports.download = async (req,res) => {
-  res.download(path.join(__dirname,"../Views/prem_resume.pdf"));
-    
-}
+
+exports.resume = async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, "../Views/prem_resume.pdf");
+    res.download(filePath, "prem_resume.pdf", (err) => {
+      if (err) {
+        console.error("Error downloading the file:", err);
+        res.status(500).send("Error downloading the file.");
+      }
+    });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    res.status(500).send("Internal server error.");
+  }
+};

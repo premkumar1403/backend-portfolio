@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
-const path = require("path")
 const mongoose = require("mongoose");
 const cors = require("cors");
 app.use(cors());
@@ -18,7 +17,7 @@ mongoose
       message: error.message, 
     })
     
-      
+       
   });
 
 app.use("/", userouter);
