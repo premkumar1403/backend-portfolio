@@ -18,8 +18,8 @@ exports.handledata = async (req, res) => {
         // send mail with defined transport object
         const info = await transporter.sendMail({
           to: email, // list of receivers
-          subject: "Hello" +name, // Subject line
-          text: "Hello"+""+name +"this is testing purpose only", // plain text body
+          subject: "Mail from" +name, // Subject line
+          text: message, // plain text body
          
         });
 
