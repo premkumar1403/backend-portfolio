@@ -4,8 +4,7 @@
  *   post:
  *     summary: Create a new user and send an email
  *     description: This endpoint allows a user to submit their name, email, and message, stores the data, and sends an email using NodeMailer.
- *     tags:
- *       - User
+
  *     requestBody:
  *       required: true
  *       content:
@@ -41,7 +40,7 @@
  *                   type: string
  *                   description: Success message.
  *                   example: success
- *                 data:
+ *                 data: 
  *                   type: object
  *                   description: The newly created user data.
  *                   properties:
@@ -80,8 +79,6 @@
  *   get:
  *     summary: Download the resume file
  *     description: This endpoint allows users to download the resume in PDF format.
- *     tags:
- *       - Resume
  *     responses:
  *       200:
  *         description: Successfully downloaded the resume file
