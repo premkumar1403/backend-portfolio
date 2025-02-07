@@ -116,7 +116,7 @@ exports.handledata = async (req, res) => {
 
 exports.resume = async (req, res) => {
   try {
-    const filePath = path.join(__dirname, "../Views/prem_resume.pdf");
+    const filePath = path.join(__dirname, "../Views/Prem-resume.pdf");
     res.download(filePath, "prem_resume.pdf", (err) => {
       if (err) {
         console.error("Error downloading the file:", err);
