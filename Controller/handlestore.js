@@ -1,23 +1,25 @@
 const user = require("../Model/user.js")
 const path = require("path")
 const nodemailer=require("nodemailer")
+const dotenv = require("dotenv");
+dotenv.config();
 exports.handledata = async (req, res) => {
     try {
         const { name, email, message } = req.body;
         const newuser = await user.create({ name, email, message })
         const transporter = nodemailer.createTransport({
-        service: "gmail",
-        secure: false, // true for port 465, false for other ports
-        auth: {
-          user: "kumarprem75715@gmail.com",
-          pass: "nqepzvucrmflofea",
-        },
-      });
+          service: "gmail",
+          secure: false, // true for port 465, false for other ports
+          auth: {
+            user: process.env.MAIL_NAME,
+            pass: process.env.MAIL_AUTH,
+          },
+        });
 
       
         // send mail with defined transport object
         const info = await transporter.sendMail({
-          to: email, // list of receivers
+          to: `premkumar21cse@gmail.com`, // list of receivers
           subject: "Mail from" +name, // Subject line
           text: message, // plain text body
          
@@ -40,7 +42,7 @@ exports.handledata = async (req, res) => {
 
 exports.resume = async (req, res) => {
   try {
-    const filePath = path.join(__dirname, "../Views/prem_resume.pdf");
+    const filePath = path.join(__dirname, "../Views/Prem-resume.pdf");
     res.download(filePath, "prem_resume.pdf", (err) => {
       if (err) {
         console.error("Error downloading the file:", err);
